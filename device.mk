@@ -109,8 +109,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
         LiveWallpapers \
         LiveWallpapersPicker \
-        VisualizationWallpapers \
-        librs_jni
+        VisualizationWallpapers
 
 # Key maps
 PRODUCT_COPY_FILES += \
@@ -190,13 +189,24 @@ PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_PACKAGES += \
-	librs_jni \
 	com.android.future.usb.accessory
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	e2fsck \
 	setup_fs
+
+# for Gecko
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.moz.has_home_button=0
+
+# for Gecko to support bluedroid stack
+PRODUCT_PACKAGES += \
+	bluetooth.default \
+	nfcd
+
+# for Gaia - set default scale value
+GAIA_DEV_PIXELS_PER_PX = 1.5
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 

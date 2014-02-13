@@ -21,9 +21,13 @@ USE_CAMERA_STUB := true
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/tuna/BoardConfigVendor.mk
 
+# Use default Gecko location if it's not provided in config files.
+GECKO_PATH ?= gecko
+
 # Default values, if not overridden else where.
 TARGET_BOARD_INFO_FILE ?= device/samsung/tuna/board-info.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/samsung/tuna/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/samsung/tuna/bluetooth \
+	$(GECKO_PATH)/dom/bluetooth/bluedroid
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
